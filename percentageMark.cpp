@@ -68,7 +68,7 @@ int main() {
     int userPercentage;
 
     // input
-    std::cout << "Enter the level you want to convert"
+    std::cout << "Enter the level you want to convert "
     << "into a percentage:" << std::endl;
     std::cin >> userMark;
 
