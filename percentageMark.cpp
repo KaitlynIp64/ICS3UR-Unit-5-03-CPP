@@ -7,84 +7,68 @@
 #include <iostream>
 #include <string>
 
-int Calculate(char mark[]) {
-    // this function calculates the mark as a percentage
-
-    // variables
-    int percentage;
+int CalculateGrade(char mark) {
+    // calculate grade
+    int percent;
 
     // process
-    switch (mark[0]) {
+    switch (mark) {
+        case '4+':
+            percent = 97;
         case '4':
-            if (mark[1] == '+') {
-                percentage = 95;
-            } else if (mark[1] == '-') {
-                percentage = 80;
-            } else {
-                percentage = 87;
-            }
-            break;
+            percent = 87;
+        case '4-':
+            percent = 80;
+        case '3+':
+            percent = 78;
         case '3':
-            if (mark[1] == '+') {
-                percentage = 77;
-            } else if (mark[1] == '-') {
-                percentage = 70;
-            } else {
-                percentage = 73;
-            }
-            break;
+            percent = 75;
+        case '3-':
+            percent = 70;
+        case '2+':
+            percent = 68;
         case '2':
-            if (mark[1] == '+') {
-                percentage = 67;
-            } else if (mark[1] == '-') {
-                percentage = 60;
-            } else {
-                percentage = 63;
-            }
-            break;
+            percent = 65;
+        case '2-':
+            percent = 61;
+        case '1+':
+            percent = 58;
         case '1':
-            if (mark[1] == '+') {
-                percentage = 57;
-            } else if (mark[1] == '-') {
-                percentage = 50;
-            } else {
-                percentage = 53;
-            }
-            break;
+            percent = 54;
+        case '1-':
+            percent = 51;
         case 'R':
-            percentage = 30;
-            break;
+            percent = 30;
+        case 'NE':
+            percent = 0;
         default:
-            percentage = -1;
+            percent = -1;
     }
-    return percentage;
-}
 
-int main() {
-    // this function shows the mark as a percentage
-
-    // variables
-    char userMark[10] = "         ";
-    int userPercentage;
-
-    // input
-    std::cout << "Enter the level you want to convert "
-    << "into a percentage:" << std::endl;
-    std::cin >> userMark;
-
-    // Process
-    if (userMark[1] != '+' && userMark[1] != '-' && userMark[1] != 0) {
-        userPercentage = -1;
-    } else {
-        userPercentage = Calculate(userMark);
-    }
+    return percent;
 
     // output
-    if (userPercentage == -1) {
-        std::cout << "That is not a valid input." << std::endl;
+    std::cout << "The area is "
+              << "." << std::endl;
+}
+int main() {
+    char mark;
+    int markPercentage;
+
+    // input
+    std::cout << "Enter the level you want to convert into a percentage: ";
+    std::cin >> mark;
+
+    // process and output
+    // call functions
+    markPercentage = CalculateGrade(mark);
+    if (markPercentage == -1) {
+        std::cout << "That is not a valid input.";
     } else {
-        std::cout << "Your mark as a percentage is: "
-        << userPercentage << "%" << std::endl;
+        std::cout << "The level "
+        << mark << " as a percentage is: " << markPercentage << "%";
     }
+    std::cout << std::endl;
+
     std::cout << "\nDone." << std::endl;
 }
